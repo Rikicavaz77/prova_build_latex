@@ -17,8 +17,11 @@ jobs:
       run: | 
         ls & 
         cd ./tools &
-        docker-compose up -d --builddocker-compose -f $DOCKER_COMPOSE_FILE up -d --build
+        docker-compose up -d --build
 
     - name: Stop containers
       if: always()
-      run: docker-compose -f "docker-compose.yml" stop
+      run: | 
+        ls & 
+        cd ./tools &
+        run: docker-compose stop
