@@ -40,8 +40,8 @@ jobs:
     - name: Push changes to remote repository
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.UPLOAD_TOKEN }}  # Il token di accesso per l'autenticazione
-        branch: main  # Il ramo a cui fare il push delle modifiche
+        #github_token: ${{ secrets.UPLOAD_TOKEN }}  # Il token di accesso per l'autenticazione
+        branch: master  # Il ramo a cui fare il push delle modifiche
         repository: Rikicavaz77/MTSS-Assignment-2
     
     - name: Publish artifacts
