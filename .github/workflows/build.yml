@@ -17,6 +17,12 @@ jobs:
       run: |
         cd ${{ github.workspace }}/tools
         docker compose up -d 
+
+    - name: Compile documents
+      run: |
+        cd ${{ github.workspace }}/src
+        chmod +x *.sh
+        ./compilescript.sh -a
       
     - name: Stop Docker Compose
       run: |
