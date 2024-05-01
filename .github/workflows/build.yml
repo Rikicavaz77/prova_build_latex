@@ -14,7 +14,9 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Change directory to tools
-      run: cd ${{ github.workspace }}/tools & ls
+      run: | 
+        cd ${{ github.workspace }}/tools
+        ls ${{ github.workspace }}/tools
 
     - name: List files in directory
       run: ls
