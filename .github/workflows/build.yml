@@ -17,7 +17,7 @@ jobs:
       run: | 
         ls & 
         cd ./tools &
-        docker-compose up -d docker-compose
+        docker-compose
 
     - name: Stop containers
       if: always()
