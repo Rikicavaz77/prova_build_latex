@@ -20,7 +20,9 @@ jobs:
 
     - name: Compile documents
       run: |
-        cd ${{ github.workspace }}/src
+        cd ${{ github.workspace }}/tools
+        docker exec -it argo-docs-latexpdfbuilder-1 bash
+        cd /data/
         chmod +x *.sh
         ./compilescript.sh -a
       
