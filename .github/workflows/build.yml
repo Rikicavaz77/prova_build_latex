@@ -38,9 +38,12 @@ jobs:
         repository: Rikicavaz77/MTSS-Assignment-2
         token: ${{ secrets.UPLOAD_TOKEN }}
     
-    - name: Commit and push changes
+    - name: Push changes to Protected Repo
+      env:
+        UPLOAD_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
       run: |
-        git status
+        git remote add origin https://github.com/Rikicavaz77/MTSS-Assignment-2.git
+        git push origin
     
     - name: Publish artifacts
       uses: actions/upload-artifact@v3
@@ -53,8 +56,6 @@ jobs:
       run: |
         cd ${{ github.workspace }}/tools
         docker compose stop
-
-        name: Build and Stop Docker Compose
     
 
 
