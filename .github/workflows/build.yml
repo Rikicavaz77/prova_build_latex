@@ -22,5 +22,8 @@ jobs:
       run: ls
       
     - name: Stop Docker Compose
-      run: docker compose stop
+      run: |
+        cd ${{ github.workspace }}/tools
+        ls ${{ github.workspace }}/tools
+        docker compose stop
 
