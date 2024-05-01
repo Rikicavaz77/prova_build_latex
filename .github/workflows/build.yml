@@ -29,8 +29,6 @@ jobs:
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -a'
 
     - name: Commit and push changes
-      env:
-        upload_token: ${{ secrets.UPLOAD_TOKEN }}
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -42,7 +40,7 @@ jobs:
     - name: Push changes to remote repository
       uses: ad-m/github-push-action@master
       with:
-        upload_token: ${{ secrets.UPLOAD_TOKEN }}  # Il token di accesso per l'autenticazione
+        github_token: ${{ secrets.UPLOAD_TOKEN }}  # Il token di accesso per l'autenticazione
         branch: main  # Il ramo a cui fare il push delle modifiche
         repository: Rikicaz77/MTSS-Assignment-2
     
