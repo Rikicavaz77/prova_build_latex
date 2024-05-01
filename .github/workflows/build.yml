@@ -43,7 +43,7 @@ jobs:
         mv build-output Docs
         git add .
         git commit -m "Compile LaTeX files and move PDFs"
-        git push board master
+        git push board
 
     #- name: Push changes to remote repository
       #uses: ad-m/github-push-action@master
