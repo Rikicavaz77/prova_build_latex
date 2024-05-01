@@ -31,12 +31,6 @@ jobs:
         mv build-output Docs
         git add .
         git commit -m "Compile LaTeX files and move PDFs"
-        
-    - name: Checkout to new repo
-      uses: actions/checkout@v2
-      with:
-        repository: Rikicavaz77/MTSS-Assignment-2
-        token: ${{ secrets.UPLOAD_TOKEN }}
     
     - name: Push changes to Protected Repo
       env:
@@ -56,6 +50,3 @@ jobs:
       run: |
         cd ${{ github.workspace }}/tools
         docker compose stop
-    
-
-
