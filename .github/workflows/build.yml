@@ -43,13 +43,13 @@ jobs:
         mv build-output Docs
         git add .
         git commit -m "Compile LaTeX files and move PDFs"
-        git push board
 
-    #- name: Push changes to remote repository
-      #uses: ad-m/github-push-action@master
-      #with:
-        #branch: master  # Il ramo a cui fare il push delle modifiche
-        #repository: Rikicavaz77/MTSS-Assignment-2
+    - name: Push changes to remote repository
+      uses: ad-m/github-push-action@master
+      with:
+        ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        branch: master  # Il ramo a cui fare il push delle modifiche
+        repository: Rikicavaz77/MTSS-Assignment-2
     
     - name: Publish artifacts
       uses: actions/upload-artifact@v3
