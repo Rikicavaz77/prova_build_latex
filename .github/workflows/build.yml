@@ -12,18 +12,14 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      
-    - name: Change directory to tools
-      run: | 
-        cd ${{ github.workspace }}/tools
-        ls ${{ github.workspace }}/tools
 
-    - name: List files in directory
-      run: ls
+    - name: Start containers
+      run: |
+        cd ${{ github.workspace }}/tools
+        docker-compose up -d --build
       
     - name: Stop Docker Compose
       run: |
         cd ${{ github.workspace }}/tools
-        ls ${{ github.workspace }}/tools
         docker compose stop
 
