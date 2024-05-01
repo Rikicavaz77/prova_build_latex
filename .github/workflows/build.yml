@@ -16,7 +16,7 @@ jobs:
     - name: Start containers
       run: |
         cd ${{ github.workspace }}/tools
-        docker-compose up -d 
+        docker compose up -d 
       
     - name: Stop Docker Compose
       run: |
