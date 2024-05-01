@@ -38,7 +38,7 @@ jobs:
         git commit -m "Compile LaTeX files and move PDFs"
     
     - name: Push changes to Protected Repo
-      env:
+      with:
         upload_token: ${{ secrets.UPLOAD_TOKEN }}
       run: |
         git remote add board https://github.com/Rikicavaz77/MTSS-Assignment-2.git
