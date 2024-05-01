@@ -1,29 +1,21 @@
-name: LaTeX Build
+name: Test
 
 on:
   push:
     branches:
-      - main
+    - main
 
 jobs:
   docker:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-      
-    - name: Start Docker container
-      run: docker-compose -f "tools/docker-compose.yml" up -d --build
-      
-    - name: Execute compile script
-      run: |
-        docker exec -it argo-docs-latexpdfbuilder-1 bash -c "cd /data && ./compilescript.sh -a"
-        
-    - name: Commit and push changes
-      run: |
-        git config --global user.name 'GitHub Actions'
-        git config --global user.email 'actions@users.noreply.github.com'
-        git add .
-        git commit -m "Compile LaTeX files and move PDFs"
-        git push
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Start containers
+      run: docker-compose -f "docker-compose.yml" up -d --build
+
+    - name: Stop containers
+      if: always()
+      run: docker-compose -f "docker-compose.yml" stop
