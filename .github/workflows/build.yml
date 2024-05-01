@@ -29,6 +29,8 @@ jobs:
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -a'
 
     - name: Commit and push changes
+      env:
+        upload_token: ${{ secrets.UPLOAD_TOKEN }}
       run: |
         git config --global user.name 'bot'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
@@ -36,13 +38,7 @@ jobs:
         mv build-output Docs
         git add .
         git commit -m "Compile LaTeX files and move PDFs"
-    
-    - name: Push changes to Protected Repo
-      with:
-        upload_token: ${{ secrets.UPLOAD_TOKEN }}
-      run: |
         git remote add board https://github.com/Rikicavaz77/MTSS-Assignment-2.git
-        git push board
     
     - name: Publish artifacts
       uses: actions/upload-artifact@v3
