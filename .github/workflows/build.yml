@@ -37,20 +37,19 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com >> ~/.ssh/known_hosts
         git config --global user.email "riccardo.cavalli@studenti.unipd.it"
-        git config --global user.name "bot"
-    
-    - name: Commit and push changes
-      run: |
+        git config --global user.name "Rikicavaz77"
         ls
         mv build-output Docs
         git add .
         git commit -m "Compile LaTeX files and move PDFs"
+        git remote add board git@github.com:Rikicavaz77/MTSS-Assignment-2.git
+        git push board master
 
-    - name: Push changes to remote repository
-      uses: ad-m/github-push-action@master
-      with:
-        branch: master  # Il ramo a cui fare il push delle modifiche
-        repository: Rikicavaz77/MTSS-Assignment-2
+    #- name: Push changes to remote repository
+      #uses: ad-m/github-push-action@master
+      #with:
+        #branch: master  # Il ramo a cui fare il push delle modifiche
+        #repository: Rikicavaz77/MTSS-Assignment-2
     
     - name: Publish artifacts
       uses: actions/upload-artifact@v3
