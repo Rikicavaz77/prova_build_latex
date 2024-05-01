@@ -3,7 +3,7 @@ name: LaTeX Build
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   build:
@@ -13,12 +13,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       
-    - name: Set up TeX environment
-      uses: xu-cheng/latex-action@v2
+    - name: Set up Docker
+      uses: docker/setup-docker@v2
       
-    - name: Compile LaTeX files
+    - name: Start Docker container
+      run: docker compose up -d
+      
+    - name: Execute compile script
       run: |
-        ./compilescript.sh -a
+        docker exec -it argo-docs-latexpdfbuilder-1 bash -c "cd /data && ./compilescript.sh -a"
         
     - name: Commit and push changes
       run: |
