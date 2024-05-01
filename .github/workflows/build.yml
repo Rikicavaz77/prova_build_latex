@@ -16,7 +16,7 @@ jobs:
     - name: Change directory to tools
       run: cd ./tools
 
-      - name: List files in directory
+    - name: List files in directory
       run: ls
       
     - name: Stop Docker Compose
