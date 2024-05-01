@@ -22,7 +22,14 @@ jobs:
       run: |
         cd ${{ github.workspace }}/tools
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -a'
-      
+    
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Documentazione
+        path: |
+          build
+            
     - name: Stop Docker Compose
       run: |
         cd ${{ github.workspace }}/tools
