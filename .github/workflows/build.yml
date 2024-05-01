@@ -39,7 +39,7 @@ jobs:
     
     - name: Push changes to Protected Repo
       env:
-        UPLOAD_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
+        upload_token: ${{ secrets.UPLOAD_TOKEN }}
       run: |
         git remote add board https://github.com/Rikicavaz77/MTSS-Assignment-2.git
         git push board
