@@ -25,8 +25,8 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git config --global user.name 'Argo-swe'
-        git config --global user.email 'argo.unipd@gmail.com'
+        git config --global user.name 'Rikicavaz77'
+        git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
         git add .
         git commit -m "Compile LaTeX files and move PDFs"
         git push
