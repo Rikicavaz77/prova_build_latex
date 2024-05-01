@@ -47,7 +47,7 @@ jobs:
     - name: Push changes to remote repository
       uses: ad-m/github-push-action@master
       with:
-        ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        ssh: ${{ secrets.SSH_PRIVATE_KEY }}
         branch: master  # Il ramo a cui fare il push delle modifiche
         repository: Rikicavaz77/MTSS-Assignment-2
     
