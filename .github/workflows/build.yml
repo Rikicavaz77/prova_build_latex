@@ -21,10 +21,7 @@ jobs:
     - name: Compile documents
       run: |
         cd ${{ github.workspace }}/tools
-        docker exec -it argo-docs-latexpdfbuilder-1 bash
-        cd ${{ github.workspace }}/data
-        chmod +x *.sh
-        ./compilescript.sh -a
+        docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -a'
       
     - name: Stop Docker Compose
       run: |
