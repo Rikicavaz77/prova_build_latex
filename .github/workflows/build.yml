@@ -22,7 +22,13 @@ jobs:
       run: |
         cd ${{ github.workspace }}/tools
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -a'
-
+        git config --global user.name 'Rikicavaz77'
+        git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
+        ls
+        mv build-output Docs
+        git add Docs 
+        git commit -m "[BOT] Caricamento PDF"
+        
     - name: Checkout to new repo
       uses: actions/checkout@v2
       with:
@@ -31,13 +37,7 @@ jobs:
     
     - name: Commit and push changes
       run: |
-        git config --global user.name 'Rikicavaz77'
-        git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
-        ls
-        mv build-output Docs
-        git add Docs 
-        git commit -m "[BOT] Caricamento PDF"
-        git push
+        git status
     
     - name: Publish artifacts
       uses: actions/upload-artifact@v3
