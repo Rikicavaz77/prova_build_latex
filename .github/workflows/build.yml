@@ -4,11 +4,14 @@ on:
   push:
     branches:
       - main
+      
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build:
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
     
     steps:
@@ -27,7 +30,7 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git config --global user.name 'Rikicavaz77'
+        git config --global user.name 'bot'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
         ls
         mv build-output Docs
