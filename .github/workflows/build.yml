@@ -13,6 +13,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Cache Docker images and data volumes
+      uses: actions/cache@v2
+      with:
+        path: |
+          /var/lib/docker
+          /path/to/your/volumes
+        key: ${{ runner.os }}-docker-cache-${{ hashFiles('{{ github.workspace }}/tools/docker/Dockerfile') }}
+        restore-keys: |
+          ${{ runner.os }}-docker-cache-
+
     - name: Start containers
       run: |
         cd ${{ github.workspace }}/tools
@@ -27,6 +37,7 @@ jobs:
       run: |
         git config --global user.name 'Rikicavaz77'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
+        ls
         git add .
         git commit -m "Compile LaTeX files and move PDFs"
         git push
