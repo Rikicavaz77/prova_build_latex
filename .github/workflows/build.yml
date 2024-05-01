@@ -42,7 +42,7 @@ jobs:
       with:
         github_token: ${{ secrets.UPLOAD_TOKEN }}  # Il token di accesso per l'autenticazione
         branch: main  # Il ramo a cui fare il push delle modifiche
-        repository: Rikicaz77/MTSS-Assignment-2
+        repository: Rikicavaz77/MTSS-Assignment-2
     
     - name: Publish artifacts
       uses: actions/upload-artifact@v3
