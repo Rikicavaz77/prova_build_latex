@@ -22,6 +22,14 @@ jobs:
       run: |
         cd ${{ github.workspace }}/tools
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -a'
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'actions@users.noreply.github.com'
+        git add .
+        git commit -m "Compile LaTeX files and move PDFs"
+        git push
     
     - name: Publish artifacts
       uses: actions/upload-artifact@v3
