@@ -13,11 +13,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       
-    - name: Set up Docker
-      uses: docker/setup-docker@v2
-      
     - name: Start Docker container
-      run: docker compose up -d
+      run: docker-compose -f "tools/docker-compose.yml" up -d --build
       
     - name: Execute compile script
       run: |
