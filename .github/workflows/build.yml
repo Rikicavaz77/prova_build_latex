@@ -39,6 +39,8 @@ jobs:
         git add .
         git commit -m "Compile LaTeX files and move PDFs"
         git remote add board https://github.com/Rikicavaz77/MTSS-Assignment-2.git
+        git config --global user.name 'github-actions'
+        git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
         git push -u board main
     
     - name: Publish artifacts
