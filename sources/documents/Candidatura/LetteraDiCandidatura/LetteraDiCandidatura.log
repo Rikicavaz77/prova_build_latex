@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)  (format=lualatex 2024.3.27)  27 MAR 2024 10:59
+This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)  (format=lualatex 2024.5.1)  1 MAY 2024 15:09
  restricted system commands enabled.
 **LetteraDiCandidatura.tex
 (./LetteraDiCandidatura.tex
@@ -1335,10 +1335,9 @@ Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
 \c@checkoddpage=\count402
 LaTeX Info: Redefining \checkoddpage on input line 45.
 )))
-(./local.tex)
-No file LetteraDiCandidatura.aux.
-
+(./local.tex) (./LetteraDiCandidatura.aux)
 \openout1 = LetteraDiCandidatura.aux
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
@@ -1350,6 +1349,7 @@ LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 5.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 5
 .
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
@@ -1437,6 +1437,8 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 5.
 LaTeX Info: Redefining \pageref on input line 5.
 LaTeX Info: Redefining \nameref on input line 5.
+
+(./LetteraDiCandidatura.out) (./LetteraDiCandidatura.out)
 \@outlinefile=\write4
 
 \openout4 = LetteraDiCandidatura.out
@@ -1594,9 +1596,6 @@ Package luatex.def Info: /data/logo/PNG/argo_icona.png  used on input line 110.
 
 (luatex.def)             Requested size: 42.67912pt x 24.00465pt.
 
-LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 110.
-
-
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1
 
@@ -1612,47 +1611,32 @@ File: /data/logo/PNG/argo_icona.png Graphic file (type png)
 Package luatex.def Info: /data/logo/PNG/argo_icona.png  used on input line 119.
 
 (luatex.def)             Requested size: 42.67912pt x 24.00465pt.
-
-LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 119.
-
 [2] (./LetteraDiCandidatura.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `LetteraDiCandidatura.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `LetteraDiCandidatura.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package rerunfilecheck Info: File `LetteraDiCandidatura.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 )
 
 Here is how much of LuaTeX's memory you used:
- 43369 strings out of 477805
+ 43384 strings out of 477805
  125056,1648299 words of node,token memory allocated
  676 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 2 glyph, 18 attribute, 78 glue_spec
 , 11 attribute_list, 5 write nodes
-   avail lists: 2:1880,3:284,4:68,5:82,6:88,7:4502,8:6,9:818,10:5,11:544
+   avail lists: 2:1880,3:286,4:72,5:82,6:89,7:4500,8:7,9:817,10:5,11:544
  62283 multiletter control sequences out of 65536+600000
  42 fonts using 3761439 bytes
- 108i,15n,104p,730b,590s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 108i,15n,104p,730b,589s stack positions out of 5000i,500n,10000p,200000b,80000s
 </data/sources/model/modelassets/poppins/Poppins-Italic.otf></data/sources/model
 /modelassets/poppins/Poppins-Regular.otf></data/sources/model/modelassets/poppin
 s/Poppins-BoldItalic.otf></data/sources/model/modelassets/poppins/Poppins-Bold.o
 tf>
-Output written on LetteraDiCandidatura.pdf (3 pages, 153538 bytes).
+Output written on LetteraDiCandidatura.pdf (3 pages, 153433 bytes).
 
-PDF statistics: 60 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+PDF statistics: 63 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
  4 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
