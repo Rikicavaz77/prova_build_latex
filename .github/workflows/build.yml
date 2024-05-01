@@ -13,11 +13,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       
-    - name: List files in directory
-      run: ls
-      
     - name: Change directory to tools
       run: cd ./tools
+
+      - name: List files in directory
+      run: ls
       
     - name: Stop Docker Compose
       run: docker compose stop
