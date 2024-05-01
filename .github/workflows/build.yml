@@ -42,8 +42,8 @@ jobs:
       env:
         UPLOAD_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
       run: |
-        git remote add origin https://github.com/Rikicavaz77/MTSS-Assignment-2.git
-        git push origin
+        git remote add board https://github.com/Rikicavaz77/MTSS-Assignment-2.git
+        git push board
     
     - name: Publish artifacts
       uses: actions/upload-artifact@v3
