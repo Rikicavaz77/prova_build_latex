@@ -22,7 +22,9 @@ jobs:
           ${{ runner.os }}-docker-
 
     - name: Write cache path to file
-      run: echo "${{ steps.cache-docker.outputs.cache-path }}" > cache_path.txt
+      run: |
+        echo "${{ steps.cache-docker.outputs.cache-path }}" > cache_path.txt
+        cat cache_path.txt
 
     - name: Load Docker image from cache
       run: docker image load -i $(cat cache_path.txt)
