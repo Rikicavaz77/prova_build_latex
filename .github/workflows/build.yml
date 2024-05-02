@@ -22,7 +22,9 @@ jobs:
           ${{ runner.os }}-docker-
 
     - name: Load Docker image from cache
-      run: docker image load -i /home/runner/.cache/docker/
+      run: |
+        cd /home/runner/work/_temp/
+        ls
 
     - name: Start containers
       env:
