@@ -23,9 +23,9 @@ jobs:
 
     - name: Load Docker image from cache
       run: |
-        cd /home/runner/work/_temp/
-        ls
-        docker load -i /home/runner/work/_temp/*/cache.tgz
+        cache_path=$(find /home/runner/work/_temp/*/cache.tgz -type f)
+        cache_dir=$(dirname "$cache_path")
+        docker image load -i "$cache_path"
 
     - name: Start containers
       env:
