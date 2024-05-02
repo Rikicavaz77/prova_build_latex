@@ -17,7 +17,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /home/runner/.cache/docker
-        key: ${{ runner.os }}-docker-${{ hashFiles('tools/docker-compose.yml') }}-${{ hashFiles('tools/docker/Dockerfile') }}
+        key: ${{ runner.os }}-docker-${{ hashFiles('tools/docker-compose.yml') }}
         restore-keys: |
           ${{ runner.os }}-docker-
 
