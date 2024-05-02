@@ -15,27 +15,18 @@ jobs:
 
     - name: Cache Docker images
       uses: actions/cache@v2
-      env:
-          cache-name: cache-name
       id: cache-docker
       with:
-        path: /home/runner/.cache/docker/${{ env.cache-name }}
+        path: /home/runner/.cache/docker/cache-name
         key: ${{ runner.os }}-docker-${{ hashFiles('tools/docker-compose.yml') }}
         restore-keys: |
-          ${{ runner.os }}-docker-${{ env.cache-name }}-
+          ${{ runner.os }}-docker-
 
     - name: Write cache path to file
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
         ls
         docker image load 
-
-    - name: Load Docker image from cache
-      run: |
-        cache_path=$(find /home/runner/work/_temp -name "cache.tgz")
-        cd /home/runner/work/_temp
-        ls
-        docker image load -i "$cache_path"
 
     - name: Start containers
       env:
