@@ -21,9 +21,14 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-docker-
 
+    - name: Use MySQL Image Cache if cache hit
+      run: docker image load --input /home/runner/.cache/docker.tar
+
     - name: Load Docker image from cache
       run: |
         cache_path=$(find /home/runner/work/_temp -name "cache.tgz")
+        cd /home/runner/work/_temp
+        ls
         docker image load -i "$cache_path"
 
     - name: Start containers
