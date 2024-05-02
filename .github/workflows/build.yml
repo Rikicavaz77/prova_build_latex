@@ -35,6 +35,9 @@ jobs:
         chmod -R g+wx /home/runner/work/prova_build_latex/prova_build_latex
         cd /home/runner/work/prova_build_latex/prova_build_latex
         ls -l
+        cat ${{ runner.os }}
+        cat ${{ hashFiles('**/tools/docker-compose.yml') }}
+        cat ${{ hashFiles('**/tools/docker/Dockerfile') }}
         
 
     - name: Start containers
