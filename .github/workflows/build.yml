@@ -30,7 +30,7 @@ jobs:
       run: |
         ls
         docker image load --help
-        docker image load -i cache.tgz
+        docker image load -i /home/runner/work/prova_build_latex/prova_build_latex/*
 
     - name: Start containers
       env:
