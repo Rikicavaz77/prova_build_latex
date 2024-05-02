@@ -29,7 +29,8 @@ jobs:
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
         ls
-        docker image load cache.tar
+        docker image load --option
+        docker image load cache
 
     - name: Start containers
       env:
