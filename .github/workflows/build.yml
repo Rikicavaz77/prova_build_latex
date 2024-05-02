@@ -24,37 +24,22 @@ jobs:
         key: ${{ runner.os }}-docker-${{ hashFiles('**/tools/docker-compose.yml') }}-${{ hashFiles('**/tools/docker/Dockerfile') }}
         restore-keys: |
           ${{ runner.os }}-docker-
-
-      
-
-    - name: Set cached image
-      if: steps.cache-docker.outputs.cache-hit == 'true'
-      run: | 
-        cd /home/runner/work/_temp
-        ls
-        cache_path=$(find . -type f -name "cache.tgz" -exec dirname {} \;)
-        cat cache_path
-        docker image load --input "$cache_path"/cache.tgz
+   # - name: Load Docker image from cache
+    #  run: docker image load -i ${{ steps.cache-docker.outputs.cache-path }}
 
     - name: Write cache path to file
-      if: steps.cache-docker.outputs.cache-hit == 'true'
-      run: |
-        ls
-        chmod -R g+wx /home/runner/work/prova_build_latex/prova_build_latex
-        cd /home/runner/work/prova_build_latex/prova_build_latex
-        ls -l
-        cat ${{ runner.os }}
-        cat ${{ hashFiles('**/tools/docker-compose.yml') }}
-        cat ${{ hashFiles('**/tools/docker/Dockerfile') }}
-        
-
-    - name: Start containers
-      env:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+      if: steps.cache-docker.outputs.cache-hit != 'true'
       run: |
         cd ${{ github.workspace }}/tools
         docker compose up -d 
+
+   # - name: Start containers
+      #env:
+       # cache-from: type=gha
+      #  cache-to: type=gha,mode=max
+      #run: |
+       # cd ${{ github.workspace }}/tools
+        #docker compose up -d 
 
     - name: Compile documents
       run: |
