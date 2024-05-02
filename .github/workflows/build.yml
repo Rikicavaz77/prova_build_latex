@@ -21,7 +21,7 @@ jobs:
       id: cache-docker
       with:
         path: /var/lib/docker/
-        key: ${{ runner.os }}-docker-${{ hashFiles('tools/docker-compose.yml') }}
+        key: ${{ runner.os }}-docker-${{ hashFiles('**/tools/docker-compose.yml') }}-${{ hashFiles('**/tools/docker/Dockerfile') }}
         restore-keys: |
           ${{ runner.os }}-docker-
 
@@ -29,7 +29,7 @@ jobs:
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
         ls
-        docker image load 
+        docker image load /*.tar
 
     - name: Start containers
       env:
