@@ -21,6 +21,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-docker-
 
+    - name: Load Docker image from cache
+      run: docker image load -i /home/runner/.cache/docker/
+
     - name: Start containers
       env:
         cache: docker
