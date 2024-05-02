@@ -39,7 +39,7 @@ jobs:
         ls
         echo $FOLDER_PATH
         echo ${{ env.FOLDER_PATH }}
-        mv $FOLDER_PATH Docs
+        
         git add /home/runner/work/prova_build_latex/prova_build_latex/tools/build-output 
         git commit -m "[BOT] Caricamento PDF"
         git push
