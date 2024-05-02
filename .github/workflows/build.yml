@@ -13,6 +13,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Cache Docker images
+      uses: actions/cache@v2
+      with:
+        path: /home/runner/.cache/docker
+        key: ${{ runner.os }}-docker-${{ hashFiles('tools/docker-compose.yml') }}-${{ hashFiles('tools/docker/Dockerfile') }}
+        restore-keys: |
+          ${{ runner.os }}-docker-
+
     - name: Start containers
       run: |
         cd ${{ github.workspace }}/tools
