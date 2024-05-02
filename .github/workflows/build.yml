@@ -13,11 +13,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Create custom cache directory
+      run: mkdir -p /home/runner/.cache/docker/my-cache
+
     - name: Cache Docker images
       uses: actions/cache@v2
       id: cache-docker
       with:
-        path: /home/runner/.cache/docker/
+        path: /home/runner/.cache/docker/my-cache
         key: ${{ runner.os }}-docker-${{ hashFiles('tools/docker-compose.yml') }}
         restore-keys: |
           ${{ runner.os }}-docker-
