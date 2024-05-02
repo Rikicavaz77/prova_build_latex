@@ -31,8 +31,8 @@ jobs:
         token: ${{ secrets.UPLOAD_TOKEN }}
     
     - name: Commit and push changes
-      env:
-       FOLDER_PATH: ${{ env.FOLDER_PATH }}
+      #env:
+       #FOLDER_PATH: ${{ env.FOLDER_PATH }}
       run: |
         git config --global user.name 'Rikicavaz77'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
