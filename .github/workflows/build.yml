@@ -24,6 +24,13 @@ jobs:
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -a'
         echo "export FOLDER_PATH=$(pwd)/build-output" >> $GITHUB_ENV
 
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Documentazione
+        path: |
+          build
+
     - name: Checkout to new repo
       uses: actions/checkout@v2
       with:
@@ -40,16 +47,9 @@ jobs:
         echo $FOLDER_PATH
         echo ${{ env.FOLDER_PATH }}
         
-        git add /home/runner/work/prova_build_latex/prova_build_latex/tools/build-output 
+        git add .
         git commit -m "[BOT] Caricamento PDF"
         git push
-    
-    - name: Publish artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: Documentazione
-        path: |
-          build
             
     - name: Stop Docker Compose
       run: |
