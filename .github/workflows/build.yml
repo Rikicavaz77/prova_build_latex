@@ -19,7 +19,7 @@ jobs:
           cache-name: cache-name
       id: cache-docker
       with:
-        path: /home/runner/.cache/docker
+        path: /home/runner/.cache/docker/my-cache
         key: ${{ runner.os }}-docker-${{ hashFiles('tools/docker-compose.yml') }}
         restore-keys: |
           ${{ runner.os }}-docker-${{ env.cache-name }}-
@@ -28,9 +28,7 @@ jobs:
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
         ls
-
-    - name: Load Docker image from cache
-      run: docker image load -i $(cat cache_path.txt)
+        docker image load 
 
     - name: Load Docker image from cache
       run: |
