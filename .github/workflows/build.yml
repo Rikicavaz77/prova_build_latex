@@ -25,6 +25,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-docker-
 
+    - name: Set cached image
+      run: echo "CACHED_IMAGE=${{ steps.cache-docker.outputs.cache-hit }}" >> $GITHUB_ENV
+
     - name: Write cache path to file
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
