@@ -2,7 +2,6 @@ version: "3.8"
 name: argo-docs
 
 services:
-    image: ${{ env.CACHED_IMAGE }}
   latexpdfbuilder:
     build: ./docker
     command: tail -F anything
