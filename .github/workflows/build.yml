@@ -20,7 +20,7 @@ jobs:
       uses: actions/cache@v2
       id: cache-docker
       with:
-        path: /home/runner/.cache/docker
+        path: /var/lib
         key: ${{ runner.os }}-docker-${{ hashFiles('tools/docker-compose.yml') }}
         restore-keys: |
           ${{ runner.os }}-docker-
