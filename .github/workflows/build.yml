@@ -49,8 +49,9 @@ jobs:
         git config --global user.name 'Rikicavaz77'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
         ls
-        
-        git add .
+        git add Candidatura
+        git commit -m "[BOT] Caricamento PDF"
+        git push 
         
             
     - name: Stop Docker Compose
