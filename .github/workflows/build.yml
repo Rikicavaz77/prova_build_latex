@@ -22,6 +22,7 @@ jobs:
       run: |
         cd ${{ github.workspace }}/tools
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -a'
+        echo "export FOLDER_PATH=$(pwd)/build-output" >> $GITHUB_ENV
 
     - name: Checkout to new repo
       uses: actions/checkout@v2
