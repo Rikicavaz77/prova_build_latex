@@ -25,7 +25,7 @@ jobs:
       run: |
         cd /home/runner/work/_temp/
         ls
-        docker load -i /home/runner/work/_temp/*.tgz
+        docker load -i /home/runner/work/_temp/*/cache.tgz
 
     - name: Start containers
       env:
