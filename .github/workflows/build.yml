@@ -30,9 +30,12 @@ jobs:
     - name: Set cached image
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: | 
+        cd /usr/bin/tar
+        ls
         cd /home/runner/work/_temp
         ls
         cache_path=$(find . -type f -name "cache.tgz" -exec dirname {} \;)
+        cat cache_path
         docker image load --input "$cache_path"/cache.tgz
 
     - name: Write cache path to file
