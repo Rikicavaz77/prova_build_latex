@@ -24,12 +24,11 @@ jobs:
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -a'
         echo "export FOLDER_PATH=$(pwd)/build-output" >> $GITHUB_ENV
 
-    - name: Publish artifacts
-      uses: actions/upload-artifact@v3
+    - name: Publish artifact
+      uses: actions/upload-artifact@v2
       with:
-        name: Documentazione
-        path: |
-          build
+        name: build-output
+        path: build-output
 
     - name: Checkout to new repo
       uses: actions/checkout@v2
