@@ -1,21 +1,19 @@
-name: Build and Stop Docker Compose
+name: Build and Deploy (PDFs) on PR Merge
 
 on:
-  push:
-    branches:
+  pull_request:
+    branches: 
       - main
+    types: [closed]
 
 jobs:
   docker:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    
-    - name: Move to tools
-      run: |
-        cd ${{ github.workspace }}/tools
 
     - name: Cache Docker images
       uses: actions/cache@v2
