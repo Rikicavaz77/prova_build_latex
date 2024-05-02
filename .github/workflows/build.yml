@@ -15,19 +15,19 @@ jobs:
 
     - name: Cache Docker images
       uses: actions/cache@v2
+      env:
+          cache-name: cache-name
       id: cache-docker
       with:
-        path: ~/.npm
+        path: /home/runner/.cache/docker
         key: ${{ runner.os }}-docker-${{ hashFiles('tools/docker-compose.yml') }}
         restore-keys: |
-          ${{ runner.os }}-docker-
+          ${{ runner.os }}-docker-${{ env.cache-name }}-
 
     - name: Write cache path to file
+      if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
-        echo "${{ steps.cache-docker.outputs.cache-path }}" > cache_path.txt
-        cat cache_path.txt
-        npm list
-        
+        ls
 
     - name: Load Docker image from cache
       run: docker image load -i $(cat cache_path.txt)
