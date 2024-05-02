@@ -29,7 +29,8 @@ jobs:
 
     - name: Set cached image
       if: steps.cache-docker.outputs.cache-hit == 'true'
-      run: docker image load --input /home/runner/.cache/docker/${{ hashFiles('**/tools/docker-compose.yml') }}-${{ hashFiles('**/tools/docker/Dockerfile') }}.tar
+      run: |
+        docker image load --input /home/runner/work/_temp/3f3d45fc-11fb-499a-a858-f291bfd89b1d/cache.tgz
 
     - name: Write cache path to file
       if: steps.cache-docker.outputs.cache-hit == 'true'
