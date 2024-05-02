@@ -30,7 +30,7 @@ jobs:
       run: |
         ls
         docker image load --help
-        docker image load cache
+        docker image load -i cache.tar
 
     - name: Start containers
       env:
