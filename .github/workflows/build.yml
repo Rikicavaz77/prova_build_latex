@@ -35,6 +35,12 @@ jobs:
       with:
         repository: Rikicavaz77/MTSS-Assignment-2
         token: ${{ secrets.UPLOAD_TOKEN }}
+
+    - name: Download
+      uses: actions/download-artifact@v2
+      with:
+        name: build-output
+        path: .
     
     - name: Commit and push changes
       #env:
@@ -43,12 +49,9 @@ jobs:
         git config --global user.name 'Rikicavaz77'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
         ls
-        echo $FOLDER_PATH
-        echo ${{ env.FOLDER_PATH }}
         
         git add .
-        git commit -m "[BOT] Caricamento PDF"
-        git push
+        
             
     - name: Stop Docker Compose
       run: |
