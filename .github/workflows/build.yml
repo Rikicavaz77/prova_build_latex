@@ -28,6 +28,7 @@ jobs:
 
     - name: Start containers
       run: |
+       cd ${{ github.workspace }}/tools
        docker compose up -d 
 
     - name: Compile documents
