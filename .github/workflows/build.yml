@@ -32,12 +32,12 @@ jobs:
     
     - name: Commit and push changes
       env:
-       FOLDER_PATH: Docs
+       FOLDER_PATH: build-output
       run: |
         git config --global user.name 'Rikicavaz77'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
         ls
-        mv build-output Docs
+        mv $FOLDER_PATH Docs
         git add Docs 
         git commit -m "[BOT] Caricamento PDF"
         git push
