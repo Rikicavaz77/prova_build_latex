@@ -12,11 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    - name: Checkout Source Repository
+      uses: actions/checkout@v4
+      with:
+          fetch-depth: 0
 
-    - name: Cache Docker images
-      uses: actions/cache@v2
+    - name: Cache Docker
+      uses: actions/cache@v4
       id: cache-docker
       with:
         path: /home/runner/.cache/docker
@@ -24,48 +26,49 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-docker-
 
-    - name: Start containers
+    - name: Start Docker Container
       run: |
        cd ${{ github.workspace }}/tools
        docker compose up -d 
 
-    - name: Compile documents
+    - name: Compile Documents
       run: |
         cd ${{ github.workspace }}/tools
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -a'
         echo "export FOLDER_PATH=$(pwd)/build-output" >> $GITHUB_ENV
 
-    - name: Publish artifact
-      uses: actions/upload-artifact@v2
+    - name: Publish Artifact
+      uses: actions/upload-artifact@v4
       with:
-        name: build-output
+        name: Docs
         path: build-output
 
-    - name: Checkout to new repo
-      uses: actions/checkout@v2
+    - name: Checkout Destination Repository
+      uses: actions/checkout@v4
       with:
         repository: Rikicavaz77/MTSS-Assignment-2
         token: ${{ secrets.UPLOAD_TOKEN }}
+        branch: main
+        fetch-depth: 0
 
-    - name: Download
-      uses: actions/download-artifact@v2
+    - name: Download Artifact
+      uses: actions/download-artifact@v4
       with:
-        name: build-output
+        name: Docs
         path: .
     
-    - name: Commit and push changes
+    - name: Push Documents
       run: |
-        git config --global user.name 'Rikicavaz77'
+        git config --global user.name 'bot'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
-        ls
         git add Candidatura
         git commit -m "[BOT] Caricamento PDF"
         git push    
             
-    - name: Checkout back to original repo
-      uses: actions/checkout@v2
+    - name: Checkout Back Source Repository
+      uses: actions/checkout@v4
             
-    - name: Stop Docker Compose
+    - name: Stop Docker Container
       run: |
         cd ${{ github.workspace }}/tools
         docker compose stop
