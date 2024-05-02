@@ -31,7 +31,7 @@ jobs:
         ls
         cd /home/runner/work/prova_build_latex/prova_build_latex
         ls
-        docker image load /home/runner/work/prova_build_latex/prova_build_latex/cache.tgz
+        docker image load /home/runner/work/prova_build_latex/prova_build_latex/cache.tar
 
     - name: Start containers
       env:
