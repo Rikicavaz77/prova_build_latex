@@ -37,8 +37,9 @@ jobs:
         git config --global user.name 'Rikicavaz77'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
         ls
-        FOLDER_NAME=$(basename "${export FOLDER_PATH}")
-        mv "${FOLDER_NAME}" Docs
+        echo $FOLDER_PATH
+        echo ${{ env.FOLDER_PATH }}
+        mv $FOLDER_PATH Docs
         git add Docs 
         git commit -m "[BOT] Caricamento PDF"
         git push
