@@ -51,13 +51,10 @@ jobs:
         ls
         git add Candidatura
         git commit -m "[BOT] Caricamento PDF"
-        git push 
-        
+        git push    
             
-    - name: Stop Docker Compose
-      run: |
-        cd ${{ github.workspace }}/tools
-        docker compose stop
+    - name: Checkout back to original repo
+      uses: actions/checkout@v2
             
     - name: Stop Docker Compose
       run: |
