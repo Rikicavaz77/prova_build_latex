@@ -22,6 +22,8 @@ jobs:
           ${{ runner.os }}-docker-
 
     - name: Start containers
+      env:
+        cache: docker
       run: |
         cd ${{ github.workspace }}/tools
         docker compose up -d 
