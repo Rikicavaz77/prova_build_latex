@@ -6,15 +6,16 @@ on:
       - main
 
 jobs:
-  build:
+  docker:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Create custom cache directory
-      run: mkdir -p /home/runner/.cache/docker/my-cache
+    
+    - name: Move to tools
+      run: |
+        cd ${{ github.workspace }}/tools
 
     - name: Cache Docker images
       uses: actions/cache@v2
@@ -24,22 +25,10 @@ jobs:
         key: ${{ runner.os }}-docker-${{ hashFiles('**/tools/docker-compose.yml') }}-${{ hashFiles('**/tools/docker/Dockerfile') }}
         restore-keys: |
           ${{ runner.os }}-docker-
-   # - name: Load Docker image from cache
-    #  run: docker image load -i ${{ steps.cache-docker.outputs.cache-path }}
 
-    - name: Write cache path to file
-      if: steps.cache-docker.outputs.cache-hit != 'true'
+    - name: Start containers
       run: |
-        cd ${{ github.workspace }}/tools
-        docker compose up -d 
-
-   # - name: Start containers
-      #env:
-       # cache-from: type=gha
-      #  cache-to: type=gha,mode=max
-      #run: |
-       # cd ${{ github.workspace }}/tools
-        #docker compose up -d 
+       docker compose up -d 
 
     - name: Compile documents
       run: |
@@ -66,8 +55,6 @@ jobs:
         path: .
     
     - name: Commit and push changes
-      #env:
-       #FOLDER_PATH: ${{ env.FOLDER_PATH }}
       run: |
         git config --global user.name 'Rikicavaz77'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
