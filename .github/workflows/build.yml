@@ -29,7 +29,7 @@ jobs:
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
         ls
-        docker image load --option
+        docker image load --help
         docker image load cache
 
     - name: Start containers
