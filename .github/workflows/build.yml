@@ -62,7 +62,7 @@ jobs:
     - name: Download Facing Repo
       uses: actions/checkout@v2
       with:
-        token: ${{ secrets.UPLOAD_TOKEN }}
+        token: ${{ secrets.FINE_GRAINED_TOKEN }}
         repository: Rikicavaz77/MTSS-Assignment-2
     - name: Clean Artifacts
       continue-on-error: true
