@@ -1,0 +1,28 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Informazioni}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Descrizione}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Partecipanti}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Glossario}{3}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Riunione}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Ritrovo iniziale}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Argomenti e temi dell'incontro}{4}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Diagramma dei casi d'uso}{4}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Gestione login per il Tecnico}{4}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Login per l'Utente Generico}{4}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Numero di attori}{5}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Ulteriori funzionalità per l'utente Tecnico}{5}{subsubsection.2.2.5}%
+\contentsline {subsubsection}{\numberline {2.2.6}Pre-prompt}{5}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.7}Funzionalità di debug}{5}{subsubsection.2.2.7}%
+\contentsline {subsubsection}{\numberline {2.2.8}Stima della correttezza del prompt}{6}{subsubsection.2.2.8}%
+\contentsline {subsubsection}{\numberline {2.2.9}Visualizzazione debug}{6}{subsubsection.2.2.9}%
+\contentsline {subsubsection}{\numberline {2.2.10}Modalità di visualizzazione per l'utente Tecnico}{6}{subsubsection.2.2.10}%
+\contentsline {subsubsection}{\numberline {2.2.11}Utilizzo di txtai in locale}{6}{subsubsection.2.2.11}%
+\contentsline {subsubsection}{\numberline {2.2.12}LLM di Hugging Face}{6}{subsubsection.2.2.12}%
+\contentsline {subsubsection}{\numberline {2.2.13}Implementazione lingue alternative}{7}{subsubsection.2.2.13}%
+\contentsline {subsubsection}{\numberline {2.2.14}Gestione delle richieste in lingue alternative}{7}{subsubsection.2.2.14}%
+\contentsline {subsubsection}{\numberline {2.2.15}Valutazione criticità lingue alternative}{7}{subsubsection.2.2.15}%
+\contentsline {subsubsection}{\numberline {2.2.16}Metodologia Agile}{7}{subsubsection.2.2.16}%
+\contentsline {subsubsection}{\numberline {2.2.17}Feedback}{7}{subsubsection.2.2.17}%
+\contentsline {section}{\numberline {3}Todo / In Progress}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Prossima riunione}{8}{subsection.3.1}%
