@@ -63,9 +63,10 @@ jobs:
     - name: Upload Documents
       continue-on-error: true
       run: |
-       ls
        if [ -d "RTB" ]; then
+         ls
          if [ -d "RTB/Verbali/Esterni" ]; then
+           echo "ciao"
            rm -rf RTB/Verbali/Esterni
          mv RTB temp-checkout
        cd ./temp-checkout
