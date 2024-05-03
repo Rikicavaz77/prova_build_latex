@@ -87,7 +87,7 @@ jobs:
             
     - name: Checkout Back Source Repository
       continue-on-error: true
-      uses: actions/checkout@v2
+      run: cd ..
          
     - name: Stop Docker Container
       run: |
