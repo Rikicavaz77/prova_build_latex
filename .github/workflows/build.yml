@@ -71,13 +71,14 @@ jobs:
     
     - name: Push Documents
       run: |
+        cd ./temp-checkout
         git config --global user.name 'github-actions'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
         git status 
         git add temp-checkout
         git commit -m "[BOT] Caricamento PDF"
         git log --max-count=3
-        git push -u origin
+        git push -u origin master
             
     - name: Checkout Back Source Repository
       uses: actions/checkout@v4
