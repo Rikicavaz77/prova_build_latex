@@ -45,7 +45,10 @@ jobs:
       run: |
        git config --global user.name 'github-actions'
        git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
-       ls
+       git checkout -b temp
+       git add build-output
+       git commit -m "ciao"
+       git push -u origin temp
        echo "SHA_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
     - name: Publish Artifact
