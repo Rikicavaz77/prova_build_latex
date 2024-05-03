@@ -7,21 +7,23 @@ permissions:
   id-token: write
 
 on:
-  push:
+  pull_request:
     branches: 
       - main
+    types: [closed]
 
 jobs:
   docker:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Source Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
           fetch-depth: 0
 
     - name: Cache Docker
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       id: cache-docker
       with:
         path: /home/runner/.cache/docker
@@ -41,13 +43,13 @@ jobs:
         echo "export FOLDER_PATH=$(pwd)/build-output" >> $GITHUB_ENV
 
     - name: Publish Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Docs
         path: build-output
 
     - name: Checkout Destination Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         token: ${{ secrets.FINE_GRAINED_TOKEN }}
         repository: Rikicavaz77/MTSS-Assignment-2
@@ -55,7 +57,7 @@ jobs:
         path: ./temp-checkout
 
     - name: Download Artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: Docs
         path: .
@@ -64,12 +66,16 @@ jobs:
       continue-on-error: true
       run: |
        if [ -d "RTB" ]; then
-         ls
          if [ -d "RTB/Verbali/Esterni" ]; then
-           echo "ciao"
            rm -rf RTB/Verbali/Esterni
          fi
          cp -r RTB/* temp-checkout/RTB/
+       fi
+       if [ -d "PB" ]; then
+         if [ -d "PB/Verbali/Esterni" ]; then
+           rm -rf PB/Verbali/Esterni
+         fi
+         cp -r PB/* temp-checkout/RTB/
        fi
        cd ./temp-checkout
     
