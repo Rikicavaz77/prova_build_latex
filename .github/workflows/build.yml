@@ -36,13 +36,13 @@ jobs:
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -d RTB'
         echo "export FOLDER_PATH=$(pwd)/build-output" >> $GITHUB_ENV
 
-    - name: ciao
+    - name: Push Documents (temp)
       run: |
        git config --global user.name 'github-actions'
        git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
        ls
        git add -f build-output/RTB
-       git commit -m "ciao"
+       git commit -m "add build-output"
        git push
 
     - name: Publish Artifact
@@ -80,6 +80,15 @@ jobs:
             
     - name: Checkout Back Source Repository
       uses: actions/checkout@v4
+
+    - name: Remove Documents (temp)
+      run: |
+       git config --global user.name 'github-actions'
+       git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
+       ls
+       git rm -f build-output/RTB
+       git commit -m "rm build-output"
+       git push
             
     - name: Stop Docker Container
       run: |
