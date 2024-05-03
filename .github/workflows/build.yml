@@ -86,7 +86,7 @@ jobs:
        git config --global user.name 'github-actions'
        git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
        ls
-       git rm -f build-output/RTB
+       git rm -r -f build-output/RTB
        git commit -m "rm build-output"
        git push
             
