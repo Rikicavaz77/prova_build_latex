@@ -72,6 +72,8 @@ compile_latex() {
     # Create the corresponding directory structure in the destination folder
     mkdir -p "$output_dir"
 
+    chmod -R +w "$DESTINATION_DIR"
+
     cd "$dir"
     # Compile LaTeX file to PDF
     # Uncomment the end to suppress all the compiler output
