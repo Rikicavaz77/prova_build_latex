@@ -69,7 +69,7 @@ jobs:
     - name: Clean Artifacts
       continue-on-error: true
       run: |
-        cd /Docs/RTB
+        cd ../Docs/RTB
         ls
     
     - name: Push Documents
