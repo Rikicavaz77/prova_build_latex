@@ -1,0 +1,13 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Informazioni}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Descrizione}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Partecipanti}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Riunione}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Ordine del Giorno}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Discussione e decisioni}{4}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Nome del team e logo}{4}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Indirizzo e-mail}{4}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Way of working}{5}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Discussione dei capitolati}{5}{subsubsection.2.2.4}%
+\contentsline {section}{\numberline {3}Todo / In Progress}{6}{section.3}%
