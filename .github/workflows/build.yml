@@ -46,7 +46,7 @@ jobs:
     - name: Publish Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: build-output
+        name: Docs
         path: build-output
 
     #name: Imposta permessi sulla directory
@@ -69,7 +69,7 @@ jobs:
     - name: Download Artifact
       uses: actions/download-artifact@v2
       with:
-        name: build-output
+        name: Docs
         path: /home/runner/work/prova_build_latex/build-output
 
     - name: Clean Artifacts
