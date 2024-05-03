@@ -69,7 +69,7 @@ jobs:
            echo "ciao"
            rm -rf RTB/Verbali/Esterni
          fi
-         mv RTB temp-checkout
+         mv -f RTB temp-checkout
        fi
        cd ./temp-checkout
     
