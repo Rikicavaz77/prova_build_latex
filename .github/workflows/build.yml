@@ -63,6 +63,7 @@ jobs:
         name: build-output
         path: /home/runner/work/prova_build_latex/build-output
     - name: Download Facing Repo
+      continue-on-error: true
       uses: actions/checkout@v2
       with:
         token: ${{ secrets.FINE_GRAINED_TOKEN }}
