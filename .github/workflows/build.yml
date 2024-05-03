@@ -75,6 +75,7 @@ jobs:
         git config --global user.name 'github-actions'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
         git status 
+        ls
         git add RTB
         git commit -m "[BOT] Caricamento PDF"
         git log --max-count=3
