@@ -45,7 +45,6 @@ jobs:
        git checkout -b temp
        git add -f build-output
        git commit -m "ciao"
-       git push -u origin temp
        echo "SHA_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
     - name: Publish Artifact
