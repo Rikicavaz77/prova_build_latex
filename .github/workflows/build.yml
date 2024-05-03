@@ -52,7 +52,7 @@ jobs:
     - name: Download Artifacts
       uses: actions/download-artifact@v2
       with:
-        name: Docs
+        name: build-output
         path: /home/runner/work/prova_build_latex/build-output
     - name: Download Facing Repo
       uses: actions/checkout@v2
