@@ -47,7 +47,6 @@ jobs:
       with:
         repository: Rikicavaz77/MTSS-Assignment-2
         token: ${{ secrets.UPLOAD_TOKEN }}
-        branch: main
         fetch-depth: 0
 
     - name: Download Artifact
