@@ -68,6 +68,7 @@ jobs:
       with:
         token: ${{ secrets.FINE_GRAINED_TOKEN }}
         repository: Rikicavaz77/MTSS-Assignment-2
+        ref: temp
     - name: Clean Artifacts
       continue-on-error: true
       run: |
