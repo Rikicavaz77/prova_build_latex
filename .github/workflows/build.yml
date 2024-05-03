@@ -46,6 +46,7 @@ jobs:
        git config --global user.name 'github-actions'
        git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
        git checkout -b temp
+       git pull origin temp
        git add -f build-output
        git commit -m "ciao"
        git push -u origin temp
