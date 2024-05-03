@@ -43,8 +43,8 @@ jobs:
        ls
        git add -f build-output/RTB
        git commit -m "add build-output"
+       git push -u origin main
        echo "SHA_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
-       git push
 
     - name: Publish Artifact
       uses: actions/upload-artifact@v2
@@ -77,7 +77,7 @@ jobs:
         git add . 
         git commit -m "[BOT] Caricamento PDF"
         git log --max-count=3
-        git push    
+        git push -u origin main
             
     - name: Checkout Back Source Repository
       uses: actions/checkout@v4
@@ -90,7 +90,7 @@ jobs:
        echo $SHA_COMMIT 
        git pull origin main
        git reset --hard $SHA_COMMIT 
-       git push 
+       git push -u origin main
        
             
     - name: Stop Docker Container
