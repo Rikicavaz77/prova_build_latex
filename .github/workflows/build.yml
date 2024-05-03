@@ -46,7 +46,7 @@ jobs:
     - name: Publish Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: Docs
+        name: build-output
         path: build-output
 
     #name: Imposta permessi sulla directory
@@ -55,7 +55,7 @@ jobs:
     - name: Download Artifact
       uses: actions/download-artifact@v2
       with:
-        name: Docs
+        name: build-output
         path: /home/runner/work/prova_build_latex/Docs
 
     - name: Checkout Destination Repository
@@ -77,7 +77,7 @@ jobs:
         git config --global user.name 'github-actions'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
         git status 
-        git add git add ../Docs/RTB/*
+        git add git add ../Docs/RTB/
         git commit -m "[BOT] Caricamento PDF"
         git log --max-count=3
         git push -u origin master
