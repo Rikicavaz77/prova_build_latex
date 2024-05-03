@@ -1,14 +1,13 @@
-name: Build and Deploy (PDFs) on PR Merge
+name: Build and Deploy
+run-name: Build and Deploy (PDFs) on PR Merge
 
 on:
-  pull_request:
+  push:
     branches: 
       - main
-    types: [closed]
 
 jobs:
   docker:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     
     steps:
@@ -59,10 +58,12 @@ jobs:
     
     - name: Push Documents
       run: |
-        git config --global user.name 'bot'
+        git config --global user.name 'github-actions'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
-        git add Candidatura
+        git status
+        git add . 
         git commit -m "[BOT] Caricamento PDF"
+        git log
         git push    
             
     - name: Checkout Back Source Repository
