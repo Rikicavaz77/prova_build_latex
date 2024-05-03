@@ -37,8 +37,8 @@ jobs:
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -d RTB'
         echo "export FOLDER_PATH=$(pwd)/build-output" >> $GITHUB_ENV
 
-    #- name: Change permissions of build-output directory
-     # run: chmod +x build-output
+    - name: Change permissions of build-output directory
+      run: chmod +w build-output
 
     - name: Push Documents (temp)
       run: |
