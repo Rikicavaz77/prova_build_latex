@@ -35,6 +35,9 @@ jobs:
         cd ${{ github.workspace }}/tools
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -d RTB'
         echo "export FOLDER_PATH=$(pwd)/build-output" >> $GITHUB_ENV
+        git add .
+        git commit -m "ciao"
+        git push
 
     - name: Publish Artifact
       uses: actions/upload-artifact@v4
