@@ -68,26 +68,17 @@ jobs:
         fetch-depth: 0
         #ref: temp
         path: ./temp-checkout
-
-    - name: Clean Artifacts
-      continue-on-error: true
-      run: |
-        ls
-        git status
     
     - name: Push Documents
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
         git status 
-        git add RTB
+        git add temp-checkout
         git commit -m "[BOT] Caricamento PDF"
         git log --max-count=3
-        git push -u origin master
+        git push -u origin
             
-    - name: Checkout Back Source Repository
-      uses: actions/checkout@v4
-
     - name: Checkout Back Source Repository
       uses: actions/checkout@v4
          
