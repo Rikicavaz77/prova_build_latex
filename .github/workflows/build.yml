@@ -42,8 +42,8 @@ jobs:
         name: build-output
         path: build-output
 
-    - name: Imposta permessi sulla directory
-      run: sudo node-gyp rebuild -g --unsafe-perm
+    #name: Imposta permessi sulla directory
+      #: sudo node-gyp rebuild -g --unsafe-perm
 
     - name: Checkout Destination Repository
       uses: actions/checkout@v2
