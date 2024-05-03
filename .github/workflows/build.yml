@@ -61,6 +61,7 @@ jobs:
         repository: Rikicavaz77/MTSS-Assignment-2
         fetch-depth: 0
         #ref: temp
+        path: ./temp-checkout
 
     - name: Download Artifacts
       uses: actions/download-artifact@v2
@@ -70,6 +71,7 @@ jobs:
 
     - name: Push Documents
       run: |
+       ls  
         cd ./temp-checkout
     
     - name: Push Documents
