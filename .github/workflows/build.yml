@@ -68,7 +68,9 @@ jobs:
          if [ -d "RTB/Verbali/Esterni" ]; then
            echo "ciao"
            rm -rf RTB/Verbali/Esterni
+         fi
          mv RTB temp-checkout
+       fi
        cd ./temp-checkout
     
     - name: Push Documents
