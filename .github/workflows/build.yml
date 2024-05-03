@@ -41,9 +41,6 @@ jobs:
        git config --global user.name 'github-actions'
        git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
        ls
-       git add -f build-output/RTB
-       git commit -m "add build-output"
-       git push -u origin main
        echo "SHA_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
     - name: Publish Artifact
@@ -54,6 +51,12 @@ jobs:
 
     #name: Imposta permessi sulla directory
       #: sudo node-gyp rebuild -g --unsafe-perm
+
+    - name: Download Artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: build-output
+        path: /home/runner/work/prova_build_latex/build-output
 
     - name: Checkout Destination Repository
       uses: actions/checkout@v2
@@ -67,7 +70,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: build-output
-        path: .
+        path: /home/runner/work/prova_build_latex/build-output
     
     - name: Push Documents
       run: |
@@ -89,8 +92,6 @@ jobs:
        ls
        echo $SHA_COMMIT 
        git pull origin main
-       git reset --hard $SHA_COMMIT 
-       git push -u origin main
        
             
     - name: Stop Docker Container
