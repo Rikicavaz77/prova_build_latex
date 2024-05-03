@@ -75,7 +75,7 @@ jobs:
          if [ -d "PB/Verbali/Esterni" ]; then
            rm -rf PB/Verbali/Esterni
          fi
-         cp -r PB/* temp-checkout/RTB/
+         cp -r PB/* temp-checkout/PB/
        fi
        cd ./temp-checkout
     
