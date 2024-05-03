@@ -49,51 +49,39 @@ jobs:
         name: build-output
         path: build-output
 
-    #name: Imposta permessi sulla directory
-      #: sudo node-gyp rebuild -g --unsafe-perm
-
-    - name: Download Artifact
+    - name: Download Artifacts
       uses: actions/download-artifact@v2
       with:
-        name: build-output
-        path: /home/runner/work/prova_build_latex/Docs
-
-    - name: Checkout Destination Repository
+        name: Docs
+        path: /home/runner/work/prova_build_latex/build-output
+    - name: Download Facing Repo
       uses: actions/checkout@v2
       with:
         token: ${{ secrets.UPLOAD_TOKEN }}
         repository: Rikicavaz77/MTSS-Assignment-2
-        fetch-depth: 0
-        user: token
-
     - name: Clean Artifacts
       continue-on-error: true
       run: |
         cd ../Docs/RTB
         ls
-    
-    - name: Push Documents
+    - name: Clean Facing Repo RTB
+      continue-on-error: true
+      run: |
+        find ./RTB -mindepth 1 ! -path './RTB/Verbali/Interni/*' -delete
+    - name: Update Facing Repo
+      run: |
+        mkdir -p "./RTB" && cp -r ../build.output/RTB/* ./RTB/
+    - name: Commit changes
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
-        git status 
-        git add git add ../Docs/RTB/
-        git commit -m "[BOT] Caricamento PDF"
-        git log --max-count=3
-        git push -u origin master
-            
+        git add .
+        git commit -m "[BOT] Aggiornamento documentazione"
+        git push
+
     - name: Checkout Back Source Repository
       uses: actions/checkout@v4
-
-    - name: Remove Documents (temp)
-      run: |
-       git config --global user.name 'github-actions'
-       git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
-       ls
-       echo $SHA_COMMIT 
-       git pull origin main
-       
-            
+         
     - name: Stop Docker Container
       run: |
         cd ${{ github.workspace }}/tools
