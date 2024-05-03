@@ -70,8 +70,10 @@ jobs:
 
     - name: Push Documents
       run: |
-       ls  
-        cd ./temp-checkout
+       ls
+       mv RTB temp-checkout
+       cd ./temp-checkout
+       ls
     
     - name: Push Documents
       run: |
