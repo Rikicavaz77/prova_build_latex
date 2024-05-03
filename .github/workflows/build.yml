@@ -66,7 +66,7 @@ jobs:
         token: ${{ secrets.FINE_GRAINED_TOKEN }}
         repository: Rikicavaz77/MTSS-Assignment-2
         fetch-depth: 0
-        ref: temp
+        #ref: temp
         path: ./temp-checkout
 
     - name: Clean Artifacts
