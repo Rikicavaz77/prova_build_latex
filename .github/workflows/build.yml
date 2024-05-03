@@ -40,12 +40,13 @@ jobs:
       run: |
        git config --global user.name 'github-actions'
        git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
+       ls
        git add .
        git commit -m "ciao"
        git push
 
     - name: Publish Artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v2
       with:
         name: build-output
         path: build-output
@@ -53,29 +54,29 @@ jobs:
     #name: Imposta permessi sulla directory
       #: sudo node-gyp rebuild -g --unsafe-perm
 
-    - name: Checkout Destination Repository
-      uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.UPLOAD_TOKEN }}
-        repository: Rikicavaz77/MTSS-Assignment-2
-        fetch-depth: 0
-        user: root
+    #- name: Checkout Destination Repository
+     # uses: actions/checkout@v2
+     # with:
+       # token: ${{ secrets.UPLOAD_TOKEN }}
+       # repository: Rikicavaz77/MTSS-Assignment-2
+        #fetch-depth: 0
+       # user: root
 
     - name: Download Artifact
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v2
       with:
         name: build-output
         path: .
     
-    - name: Push Documents
-      run: |
-        git config --global user.name 'github-actions'
-        git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
-        git status 
-        git add . 
-        git commit -m "[BOT] Caricamento PDF"
-        git log --max-count=3
-        git push    
+   # - name: Push Documents
+     # run: |
+      #  git config --global user.name 'github-actions'
+       # git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
+       # git status 
+      #  git add . 
+      #  git commit -m "[BOT] Caricamento PDF"
+       # git log --max-count=3
+      #  git push    
             
     - name: Checkout Back Source Repository
       uses: actions/checkout@v4
