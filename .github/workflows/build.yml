@@ -48,6 +48,9 @@ jobs:
         repository: Rikicavaz77/MTSS-Assignment-2
         token: ${{ secrets.UPLOAD_TOKEN }}
         fetch-depth: 0
+        
+    - name: Imposta permessi sulla directory
+      run: chmod -R 770 /home/runner/work/prova_build_latex/prova_build_latex/build-output/
 
     - name: Download Artifact
       uses: actions/download-artifact@v4
