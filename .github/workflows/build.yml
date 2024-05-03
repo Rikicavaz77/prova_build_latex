@@ -39,7 +39,7 @@ jobs:
     - name: Publish Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: Docs
+        name: build-output
         path: build-output
 
     - name: Checkout Destination Repository
@@ -52,7 +52,7 @@ jobs:
     - name: Download Artifact
       uses: actions/download-artifact@v4
       with:
-        name: Docs
+        name: build-output
         path: .
     
     - name: Push Documents
