@@ -69,6 +69,7 @@ jobs:
         repository: Rikicavaz77/MTSS-Assignment-2
         fetch-depth: 0
         ref: temp
+        path: ./temp-checkout
 
     - name: Clean Artifacts
       continue-on-error: true
