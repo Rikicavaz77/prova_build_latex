@@ -1,6 +1,10 @@
 name: Build and Deploy
 run-name: Build and Deploy (PDFs) on PR Merge
-  
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 on:
   push:
@@ -10,15 +14,14 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    
     steps:
     - name: Checkout Source Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       with:
           fetch-depth: 0
 
     - name: Cache Docker
-      uses: actions/cache@v4
+      uses: actions/cache@v3
       id: cache-docker
       with:
         path: /home/runner/.cache/docker
@@ -37,58 +40,52 @@ jobs:
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -d RTB'
         echo "export FOLDER_PATH=$(pwd)/build-output" >> $GITHUB_ENV
 
-
-    - name: Push Documents (temp)
-      run: |
-       git config --global user.name 'github-actions'
-       git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
-       git checkout -b temp
-       git add -f build-output
-       git commit -m "ciao"
-       echo "SHA_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
-
     - name: Publish Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
-        name: build-output
+        name: Docs
         path: build-output
 
     - name: Checkout Destination Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         token: ${{ secrets.FINE_GRAINED_TOKEN }}
         repository: Rikicavaz77/MTSS-Assignment-2
         fetch-depth: 0
-        #ref: temp
         path: ./temp-checkout
 
     - name: Download Artifacts
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
-        name: build-output
+        name: Docs
         path: .
 
-    - name: Push Documents
+    - name: Upload Documents
+      continue-on-error: true
       run: |
        ls
-       mv RTB temp-checkout
+       if [ -d "RTB" ]; then
+         if [ -d "RTB/Verbali/Esterni" ]; then
+           rm -rf RTB/Verbali/Esterni
+         mv RTB temp-checkout
        cd ./temp-checkout
-       ls
     
     - name: Push Documents
+      continue-on-error: true
       run: |
         cd ./temp-checkout
         git config --global user.name 'github-actions'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
         git status 
-        ls
         git add .
         git commit -m "[BOT] Caricamento PDF"
         git log --max-count=3
-        git push -u origin master
+        git push -u origin
             
     - name: Checkout Back Source Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
+      with:
+          fetch-depth: 0
          
     - name: Stop Docker Container
       run: |
