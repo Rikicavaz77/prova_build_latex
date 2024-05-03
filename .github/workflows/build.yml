@@ -65,7 +65,7 @@ jobs:
     - name: Checkout Destination Repository
       uses: actions/checkout@v2
       with:
-        token: ${{ secrets.UPLOAD_TOKEN }}
+        token: ${{ secrets.FINE_GRAINED_TOKEN }}
         repository: Rikicavaz77/MTSS-Assignment-2
         fetch-depth: 0
         ref: temp
