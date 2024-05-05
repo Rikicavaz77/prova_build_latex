@@ -30,11 +30,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-docker-
 
-    - name: ciao
-      run: |
-          cd /home/runner/.cache/docker
-          ls
-
     - name: Set Docker Build Environment Variable
       if: steps.cache-docker.outputs.cache-hit != 'true'
       run: |
