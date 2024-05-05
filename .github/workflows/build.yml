@@ -65,7 +65,15 @@ jobs:
     - name: ciao
       run: |
         ls
-        mv build-output/RTB .
+
+    # Estrazione dei file
+    - name: Download Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: Docs
+        path: .
+        github-token: ${{ secrets.FINE_GRAINED_TOKEN }}
+        repository: Rikicavaz77/MTSS-Assignment-2
 
     # Clonazione del repository di destinazione in una directory temporanea
     - name: Checkout Destination Repository
@@ -75,13 +83,6 @@ jobs:
         repository: Rikicavaz77/MTSS-Assignment-2
         fetch-depth: 0
         path: ./temp-checkout
-
-    # Estrazione dei file
-    - name: Download Artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: Docs
-        path: .
 
     - name: ciao
       run: |
@@ -107,13 +108,7 @@ jobs:
       continue-on-error: true
       run: |
         cd ./temp-checkout
-        git config --global user.name 'github-actions'
-        git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
-        git status 
-        git add .
-        git commit -m "[BOT] Caricamento PDF"
-        git log --max-count=3
-        git push -u origin
+        ls
             
     - name: Checkout Back Source Repository
       continue-on-error: true
