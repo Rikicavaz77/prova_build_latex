@@ -47,7 +47,7 @@ jobs:
     - name: Start Docker Container
       run: |
        cd ${{ github.workspace }}/tools
-       docker-compose build
+       docker-compose up -d
 
     # Compilazione dei documenti tramite shell interattiva all'interno del contenitore Docker
     - name: Compile Documents
