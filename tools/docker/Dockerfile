@@ -27,3 +27,4 @@ RUN if [ "$BUILD_DOCKER" = "true" ]; then \
 	texlive-fonts-extra\
 	zip \
 	&& rm -rf /var/lib/apt/lists/*
+ fi
