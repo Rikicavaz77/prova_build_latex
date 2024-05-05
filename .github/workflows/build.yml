@@ -23,29 +23,22 @@ jobs:
           fetch-depth: 0
 
     - name: Cache Docker
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       id: cache-docker
       with:
         path: /home/runner/.cache/docker
-        key: ${{ runner.os }}-docker-${{ hashFiles('tools/docker-compose.yml') }}
+        key: ${{ runner.os }}-docker-${{ hashFiles('**/tools/docker-compose.yml') }}-${{ hashFiles('**/tools/docker/Dockerfile') }}
         restore-keys: |
           ${{ runner.os }}-docker-
-
-    - name: Set Docker Build Environment Variable
-      if: steps.cache-docker.outputs.cache-hit != 'true'
-      run: echo "BUILD_DOCKER=true" >> $GITHUB_ENV
-
     - name: Start Docker Container
       run: |
        cd ${{ github.workspace }}/tools
        docker compose up -d 
-
     - name: Compile Documents
       run: |
         cd ${{ github.workspace }}/tools
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -d RTB'
         echo "export FOLDER_PATH=$(pwd)/build-output" >> $GITHUB_ENV
-
     - name: Publish Artifact
       uses: actions/upload-artifact@v4
       with:
