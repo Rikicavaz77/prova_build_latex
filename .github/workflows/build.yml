@@ -47,7 +47,7 @@ jobs:
     - name: Start Docker Container
       run: |
        cd ${{ github.workspace }}/tools
-       docker compose up -d 
+       docker compose start
 
     # Compilazione dei documenti tramite shell interattiva all'interno del contenitore Docker
     - name: Compile Documents
@@ -62,10 +62,6 @@ jobs:
         name: Docs
         path: build-output
 
-    - name: ciao
-      run: |
-        ls
-
     # Clonazione del repository di destinazione in una directory temporanea
     - name: Checkout Destination Repository
       uses: actions/checkout@v4
@@ -75,49 +71,46 @@ jobs:
         fetch-depth: 0
         path: ./temp-checkout
 
-    # Estrazione dei file
+    # Caricamento dei file estratti dall'archivio nella directory temporanea
     - name: Download Artifacts
       uses: actions/download-artifact@v4
       with:
         name: Docs
         path: ./temp-checkout
 
-    - name: ciao
-      run: |
-        ls
-
-    - name: Upload Documents
+    # Pulizia dell'output prima dell'aggiornamento del repository di destinazione
+    - name: Clean Output
       continue-on-error: true
-      run: ls
-      #run: |
-       #if [ -d "RTB" ]; then
-         #if [ -d "RTB/Verbali/Esterni" ]; then
-           #rm -rf RTB/Verbali/Esterni
-         #fi
-         #cp -r RTB/* temp-checkout/RTB/
-       #fi
-       #if [ -d "PB" ]; then
-         #if [ -d "PB/Verbali/Esterni" ]; then
-           #rm -rf PB/Verbali/Esterni
-         #fi
-         #cp -r PB/* temp-checkout/PB/
-       #fi
-    
-    - name: Push Documents
+      # I verbali esterni, poiché firmati dalla Proponente, non vanno caricati nel repository di destinazione
+      run: |
+        cd ./temp-checkout
+        if [ -d "RTB" ]; then
+          if [ -d "RTB/Verbali/Esterni" ]; then
+            rm -rf RTB/Verbali/Esterni
+          fi
+        fi
+        if [ -d "PB" ]; then
+          if [ -d "PB/Verbali/Esterni" ]; then
+            rm -rf PB/Verbali/Esterni
+          fi
+        fi
+
+    # Caricamento dei PDF nel repository di destinazione
+    - name: Upload Documents
       continue-on-error: true
       run: |
         cd ./temp-checkout
-        ls
-        cd RTB
-        ls
-        cd Verbali
-        ls
-            
-    - name: Checkout Back Source Repository
-      continue-on-error: true
-      run: ls
-         
+        git config --global user.name 'github-actions'
+        git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
+        git status 
+        git add .
+        git commit -m "[BOT] Caricamento PDF"
+        git log --max-count=3
+        git push -u origin
+
+    # Arresto dell'esecuzione dei contenitori Docker
     - name: Stop Docker Container
+      continue-on-error: true
       run: |
         cd ${{ github.workspace }}/tools
-        docker compose down
+        docker compose stop
