@@ -41,14 +41,9 @@ jobs:
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
        ls
-       cd /home/runner/work/_temp
+       cd tools
        ls
-       cd ..
-       cd ..
-       ls
-       cd ./prova_build_latex
-       ls
-       cd ./prova_build_latex
+       cd docker
        ls
     
     - name: Compile Documents
