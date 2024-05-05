@@ -34,15 +34,12 @@ jobs:
       if: steps.cache-docker.outputs.cache-hit != 'true'
       run: |
         cd ${{ github.workspace }}/tools
-        docker compose up -d 
+        docker build -t ubuntu .
           
     - name: Start Docker Container
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
-       docker build -t myimage .
-
-    - name: Push Docker image
-      run: docker push myimage
+       docker compose up -d 
     
     - name: Compile Documents
       run: |
