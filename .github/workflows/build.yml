@@ -53,7 +53,7 @@ jobs:
     - name: Compile Documents
       run: |
         cd ${{ github.workspace }}/tools
-        docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -d 2_RTB'
+        docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -d RTB'
 
     # Pubblicazione dell'artefatto generato durante il processo di build
     - name: Publish Artifact
