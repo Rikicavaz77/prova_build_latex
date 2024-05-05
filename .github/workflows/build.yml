@@ -34,8 +34,8 @@ jobs:
       if: steps.cache-docker.outputs.cache-hit != 'true'
       run: |
         cd ${{ github.workspace }}/tools
-        docker build -t ubuntu:22-04 .
-          
+        docker image load ubuntu:22-04
+        
     - name: Start Docker Container
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
