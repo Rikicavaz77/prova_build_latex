@@ -7,13 +7,13 @@ permissions:
   id-token: write
 
 on:
+  push:
+    branches:
+      - main
   #pull_request:
     #branches: 
       #- main
     #types: [closed]
-  push:
-    branches:
-      - main
 
 jobs:
   docker:
