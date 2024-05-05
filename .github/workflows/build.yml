@@ -33,6 +33,8 @@ jobs:
     - name: Set Docker Build Environment Variable
       if: steps.cache-docker.outputs.cache-hit != 'true'
       run: |
+        cd ${{ github.workspace }}/tools
+        docker compose up -d
         ls
         
     - name: Start Docker Container
