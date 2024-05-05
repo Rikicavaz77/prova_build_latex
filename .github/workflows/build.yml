@@ -32,9 +32,9 @@ jobs:
 
     - name: ciao
       run: |
-          cd home/runner/work/prova_build_latex
+          cd home/runner/work/prova_build_latex/prova_build_latex
           ls
-          cd prova_build_latex
+          cd /home/runner/.cache/docker
           ls
 
     - name: Set Docker Build Environment Variable
