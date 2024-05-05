@@ -33,7 +33,7 @@ jobs:
     - name: Set Docker Build Environment Variable
       if: steps.cache-docker.outputs.cache-hit != 'true'
       run: |
-        docker image load -i ubuntu:22-04
+        docker image load -i ubuntu
         
     - name: Start Docker Container
       if: steps.cache-docker.outputs.cache-hit == 'true'
