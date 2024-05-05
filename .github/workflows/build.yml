@@ -33,7 +33,6 @@ jobs:
     - name: Set Docker Build Environment Variable
       if: steps.cache-docker.outputs.cache-hit != 'true'
       run: |
-        cd ${{ github.workspace }}/tools
         docker image load -i ubuntu:22-04
         
     - name: Start Docker Container
