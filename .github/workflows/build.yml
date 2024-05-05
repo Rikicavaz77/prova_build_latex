@@ -81,7 +81,6 @@ jobs:
       with:
         name: Docs
         path: ./temp-checkout
-        token: ${{ secrets.FINE_GRAINED_TOKEN }}
 
     - name: ciao
       run: |
@@ -89,19 +88,19 @@ jobs:
 
     - name: Upload Documents
       continue-on-error: true
-      run: |
-       if [ -d "RTB" ]; then
-         if [ -d "RTB/Verbali/Esterni" ]; then
-           rm -rf RTB/Verbali/Esterni
-         fi
-         cp -r RTB/* temp-checkout/RTB/
-       fi
-       if [ -d "PB" ]; then
-         if [ -d "PB/Verbali/Esterni" ]; then
-           rm -rf PB/Verbali/Esterni
-         fi
-         cp -r PB/* temp-checkout/PB/
-       fi
+      #run: |
+       #if [ -d "RTB" ]; then
+         #if [ -d "RTB/Verbali/Esterni" ]; then
+           #rm -rf RTB/Verbali/Esterni
+         #fi
+         #cp -r RTB/* temp-checkout/RTB/
+       #fi
+       #if [ -d "PB" ]; then
+         #if [ -d "PB/Verbali/Esterni" ]; then
+           #rm -rf PB/Verbali/Esterni
+         #fi
+         #cp -r PB/* temp-checkout/PB/
+       #fi
     
     - name: Push Documents
       continue-on-error: true
