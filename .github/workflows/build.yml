@@ -45,6 +45,8 @@ jobs:
        ls
        cd ..
        ls
+       cd /prova_build_latex
+       ls
     
     - name: Compile Documents
       run: |
