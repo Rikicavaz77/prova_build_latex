@@ -3,7 +3,10 @@ name: argo-docs
 
 services:
   latexpdfbuilder:
-    build: ./docker
+    build: 
+      context: ./docker
+      args:
+        - BUILD_DOCKER=${BUILD_DOCKER:-false}
     command: tail -F anything
     environment:
       - TEXINPUTS=/data/sources/model//:${TEXINPUTS}
