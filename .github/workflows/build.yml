@@ -27,9 +27,13 @@ jobs:
       id: cache-docker
       with:
         path: /home/runner/.cache/docker
-        key: ${{ runner.os }}-docker-${{ hashFiles('**/tools/docker-compose.yml') }}-${{ hashFiles('**/tools/docker/Dockerfile') }}
+        key: ${{ runner.os }}-docker-${{ hashFiles('tools/docker-compose.yml') }}-${{ hashFiles('tools/docker/Dockerfile') }}
         restore-keys: |
           ${{ runner.os }}-docker-
+
+    - name: Set Docker Build Environment Variable
+      if: steps.cache-docker.outputs.cache-hit != 'true'
+      run: echo "BUILD_DOCKER=true" >> $GITHUB_ENV
 
     - name: Start Docker Container
       run: |

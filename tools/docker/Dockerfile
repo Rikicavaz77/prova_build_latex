@@ -3,7 +3,11 @@ FROM ubuntu:22.04
 # filenames may contain accented letters
 ENV LANG=C.UTF-8
 
-RUN apt-get update && apt-get install --no-install-recommends -y \
+ARG BUILD_DOCKER=false
+
+# Esegui il build solo se la variabile BUILD_DOCKER è impostata su 'true'
+RUN if [ "$BUILD_DOCKER" = "true" ]; then \
+     RUN apt-get update && apt-get install --no-install-recommends -y \
 	dos2unix \
 	libgmp10 \
 	nano \
@@ -23,3 +27,4 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 	texlive-fonts-extra\
 	zip \
 	&& rm -rf /var/lib/apt/lists/*
+    fi
