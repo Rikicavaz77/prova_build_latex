@@ -25,22 +25,22 @@ jobs:
       uses: actions/cache@v4
       id: cache-docker
       with:
-        path: /home/runner/.cache/docker
-        key: ${{ runner.os }}-docker-${{ hashFiles('**/tools/docker-compose.yml') }}-${{ hashFiles('**/tools/docker/Dockerfile') }}
+        path: cache-docker
+        key: ${{ runner.os }}-docker-
         restore-keys: |
           ${{ runner.os }}-docker-
 
     - name: Set Docker Build Environment Variable
       if: steps.cache-docker.outputs.cache-hit != 'true'
       run: |
-        curl -L ${{ steps.cache-docker.outputs.archive-location }} --output cache_archive.tar
-        tar -xf cache_archive.tar
+       
         ls
         
     - name: Start Docker Container
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
-       docker compose up -d 
+       /primes.sh -d prime-numbers
+       ls
     
     - name: Compile Documents
       run: |
