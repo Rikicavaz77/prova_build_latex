@@ -41,6 +41,8 @@ jobs:
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
        ls
+       cd Logo
+       ls
     
     - name: Compile Documents
       run: |
