@@ -40,7 +40,6 @@ jobs:
     - name: Start Docker Container
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
-       /primes.sh -d prime-numbers
        ls
     
     - name: Compile Documents
