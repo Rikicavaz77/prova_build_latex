@@ -110,7 +110,9 @@ jobs:
       run: |
         cd ./temp-checkout
         ls
-        cd /RTB/Verbali
+        cd RTB
+        ls
+        cd Verbali
         ls
             
     - name: Checkout Back Source Repository
