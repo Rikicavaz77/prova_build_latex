@@ -25,7 +25,7 @@ jobs:
       uses: actions/cache@v4
       id: cache-docker
       with:
-        path: .
+        path: tools/docker
         key: ${{ runner.os }}-docker
         restore-keys: |
           ${{ runner.os }}-docker
