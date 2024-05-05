@@ -31,6 +31,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-docker-
 
+    - name: Set Docker Build Environment Variable
+      if: steps.cache-docker.outputs.cache-hit != 'true'
+      run: echo "BUILD_DOCKER=true" >> $GITHUB_ENV
+
     - name: Start Docker Container
       run: |
        cd ${{ github.workspace }}/tools
