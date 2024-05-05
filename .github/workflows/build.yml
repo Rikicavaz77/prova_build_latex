@@ -53,7 +53,7 @@ jobs:
     - name: Compile Documents
       run: |
         cd ${{ github.workspace }}/tools
-        docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -d RTB && mv build-output/RTB .'
+        docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -d RTB'
 
     # Pubblicazione dell'artefatto generato durante il processo di build
     - name: Publish Artifact
@@ -65,15 +65,8 @@ jobs:
     - name: ciao
       run: |
         ls
-
-    # Estrazione dei file
-    - name: Download Artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: Docs
-        path: .
-        github-token: ${{ secrets.FINE_GRAINED_TOKEN }}
-        repository: Rikicavaz77/MTSS-Assignment-2
+        cp build-output/RTB .
+        ls
 
     # Clonazione del repository di destinazione in una directory temporanea
     - name: Checkout Destination Repository
@@ -82,7 +75,16 @@ jobs:
         token: ${{ secrets.FINE_GRAINED_TOKEN }}
         repository: Rikicavaz77/MTSS-Assignment-2
         fetch-depth: 0
-        path: ./temp-checkout
+        #path: ./temp-checkout
+
+    # Estrazione dei file
+    - name: Download Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: Docs
+        path: .
+        token: ${{ secrets.FINE_GRAINED_TOKEN }}
+        repository: Rikicavaz77/prova_build_latex
 
     - name: ciao
       run: |
