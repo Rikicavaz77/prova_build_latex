@@ -45,7 +45,7 @@ jobs:
        ls
        cd ..
        ls
-       cat prova_build_latex
+       cd ./prova_build_latex
        ls
     
     - name: Compile Documents
