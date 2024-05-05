@@ -110,10 +110,12 @@ jobs:
       run: |
         cd ./temp-checkout
         ls
+        cd RTB/Verbali
+        ls
             
     - name: Checkout Back Source Repository
       continue-on-error: true
-      run: cd ..
+      #run: cd ..
          
     - name: Stop Docker Container
       run: |
