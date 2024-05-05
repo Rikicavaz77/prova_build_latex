@@ -25,7 +25,7 @@ jobs:
       uses: actions/cache@v4
       id: cache-docker
       with:
-        path: /home/runner/work/_temp/prova_build_latex/prova_build_latex
+        path: .
         key: ${{ runner.os }}-docker
         restore-keys: |
           ${{ runner.os }}-docker
