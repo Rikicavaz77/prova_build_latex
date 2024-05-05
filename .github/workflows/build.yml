@@ -63,7 +63,9 @@ jobs:
         path: build-output
 
     - name: ciao
-      run: ls
+      run: |
+        ls
+        mv build-output/RTB .
 
     # Clonazione del repository di destinazione in una directory temporanea
     - name: Checkout Destination Repository
@@ -80,6 +82,10 @@ jobs:
       with:
         name: Docs
         path: .
+
+    - name: ciao
+      run: |
+        ls
 
     - name: Upload Documents
       continue-on-error: true
