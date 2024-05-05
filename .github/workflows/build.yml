@@ -32,8 +32,6 @@ jobs:
 
     - name: ciao
       run: |
-          cd home/runner/work/prova_build_latex/prova_build_latex
-          ls
           cd /home/runner/.cache/docker
           ls
 
@@ -46,8 +44,10 @@ jobs:
     - name: Start Docker Container
       if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
-       cd ${{ github.workspace }}/tools/ciao
-       docker compose up -d 
+       docker build -t myimage .
+
+    - name: Push Docker image
+      run: docker push myimage
     
     - name: Compile Documents
       run: |
