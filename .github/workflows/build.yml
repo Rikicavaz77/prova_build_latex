@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
 
     - name: Cache Docker images
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       id: cache-docker
       with:
         path: /home/runner/work/_temp/prova_build_latex/prova_build_latex
