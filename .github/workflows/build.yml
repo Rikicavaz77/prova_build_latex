@@ -33,7 +33,9 @@ jobs:
     - name: Set Docker Build Environment Variable
       if: steps.cache-docker.outputs.cache-hit != 'true'
       run: |
-        docker image load -i ubuntu
+        curl -L ${{ steps.cache-docker.outputs.archive-location }} --output cache_archive.tar
+        tar -xf cache_archive.tar
+        ls
         
     - name: Start Docker Container
       if: steps.cache-docker.outputs.cache-hit == 'true'
