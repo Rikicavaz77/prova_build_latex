@@ -8,12 +8,8 @@ permissions:
 
 on:
   push:
-    branches:
+    branches: 
       - main
-  #pull_request:
-    #branches: 
-      #- main
-    #types: [closed]
 
 jobs:
   docker:
