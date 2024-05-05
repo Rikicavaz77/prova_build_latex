@@ -88,6 +88,7 @@ jobs:
 
     - name: Upload Documents
       continue-on-error: true
+      run: ls
       #run: |
        #if [ -d "RTB" ]; then
          #if [ -d "RTB/Verbali/Esterni" ]; then
