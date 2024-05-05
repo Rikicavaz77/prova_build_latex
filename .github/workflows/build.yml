@@ -25,8 +25,8 @@ jobs:
       uses: actions/cache@v4
       id: cache-docker
       with:
-        path: tools/docker
-        key: ${{ runner.os }}-docker
+        path: ${{ github.workspace }}/tools/docker
+        key: ${{ runner.os }}-docker-${{ hashFiles('**/tools/docker-compose.yml') }}-${{ hashFiles('**/tools/docker/Dockerfile') }}
         restore-keys: |
           ${{ runner.os }}-docker
 
