@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Source Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2
       with:
           fetch-depth: 0
 
@@ -43,6 +43,7 @@ jobs:
        ls
        cd /home/runner/work/_temp
        ls
+       cd ..
        cd ..
        ls
        cd ./prova_build_latex
