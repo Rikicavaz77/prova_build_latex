@@ -43,6 +43,8 @@ jobs:
        ls
        cd /home/runner/work/_temp
        ls
+       cd ..
+       ls
     
     - name: Compile Documents
       run: |
