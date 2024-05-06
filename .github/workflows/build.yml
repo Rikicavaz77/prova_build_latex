@@ -61,16 +61,17 @@ jobs:
       continue-on-error: true
       # I verbali esterni, poiché firmati dalla Proponente, non vanno ricompilati
       run: |
-        mkdir Docs
-        cp -r build-output/RTB Docs
-        if [ -d "Docs/RTB" ]; then
-          if [ -d "Docs/RTB/Verbali/Esterni" ]; then
-            rm -rf Docs/RTB/Verbali/Esterni
+        mkdir build-output-clean
+        if [ -d "build-output/RTB" ]; then
+          cp -r build-output-clean/RTB build-output-clean
+          if [ -d "build-output-clean/RTB/Verbali/Esterni" ]; then
+            rm -rf build-output-clean/RTB/Verbali/Esterni
           fi
         fi
-        if [ -d "Docs/PB" ]; then
-          if [ -d "Docs/PB/Verbali/Esterni" ]; then
-            rm -rf Docs/PB/Verbali/Esterni
+        if [ -d "build-output/PB" ]; then
+          cp -r build-output-clean/PB build-output-clean
+          if [ -d "build-output-clean/PB/Verbali/Esterni" ]; then
+            rm -rf build-output-clean/PB/Verbali/Esterni
           fi
         fi
     
@@ -79,7 +80,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Docs
-        path: Docs
+        path: build-output-clean
 
     # Clonazione del repository di destinazione in una directory temporanea
     - name: Checkout Destination Repository
@@ -107,7 +108,7 @@ jobs:
         git config --global user.name 'github-actions'
         git config --global user.email 'riccardo.cavalli@studenti.unipd.it'
         git status 
-        git add .
+        git add 2_RTB/*
         git commit -m "[BOT] Caricamento PDF"
         git log --max-count=3
         git push -u origin
