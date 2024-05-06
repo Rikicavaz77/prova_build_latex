@@ -9,17 +9,17 @@ permissions:
 
 # Trigger: pull request sul ramo base
 on:
-  pull_request:
+  push:
     branches: 
       - main
-    types: [closed]
+    #types: [closed]
 
 # Unità di lavoro all'interno del workflow
 jobs:
   docker:
   
     # Controllo se la pull request è stata unita al ramo base
-    if: github.event.pull_request.merged == true
+    #if: github.event.pull_request.merged == true
     
     # Esecuzione in ambiente Ubuntu con le ultime versioni di pacchetti e librerie
     runs-on: ubuntu-latest
@@ -56,6 +56,22 @@ jobs:
         cd ${{ github.workspace }}/tools
         docker exec argo-docs-latexpdfbuilder-1 bash -c 'cd /data && chmod +x *.sh && ./compilescript.sh -d RTB'
 
+    # Pulizia dell'output prima della generazione dell'artefatto
+    - name: Clean Output
+      continue-on-error: true
+      # I verbali esterni, poiché firmati dalla Proponente, non vanno ricompilati
+      run: |
+        if [ -d "build-output/RTB" ]; then
+          if [ -d "build-output/RTB/Verbali/Esterni" ]; then
+            rm -rf build-output/RTB/Verbali/Esterni
+          fi
+        fi
+        if [ -d "build-output/PB" ]; then
+          if [ -d "build-output/PB/Verbali/Esterni" ]; then
+            rm -rf build-output/PB/Verbali/Esterni
+          fi
+        fi
+    
     # Pubblicazione dell'artefatto generato durante il processo di build
     - name: Publish Artifact
       uses: actions/upload-artifact@v4
@@ -80,23 +96,6 @@ jobs:
       with:
         name: Docs
         path: ./temp-checkout
-
-    # Pulizia dell'output prima dell'aggiornamento del repository di destinazione
-    - name: Clean Output
-      continue-on-error: true
-      # I verbali esterni, poiché firmati dalla Proponente, non vanno caricati nel repository di destinazione
-      run: |
-        cd ./temp-checkout
-        if [ -d "RTB" ]; then
-          if [ -d "RTB/Verbali/Esterni" ]; then
-            rm -rf RTB/Verbali/Esterni
-          fi
-        fi
-        if [ -d "PB" ]; then
-          if [ -d "PB/Verbali/Esterni" ]; then
-            rm -rf PB/Verbali/Esterni
-          fi
-        fi
 
     # Caricamento dei PDF nel repository di destinazione
     - name: Upload Documents
