@@ -61,14 +61,16 @@ jobs:
       continue-on-error: true
       # I verbali esterni, poiché firmati dalla Proponente, non vanno ricompilati
       run: |
-        if [ -d "build-output/RTB" ]; then
-          if [ -d "build-output/RTB/Verbali/Esterni" ]; then
-            rm -rf build-output/RTB/Verbali/Esterni
+        mkdir Docs
+        cp -r build-output/RTB Docs
+        if [ -d "Docs/RTB" ]; then
+          if [ -d "Docs/RTB/Verbali/Esterni" ]; then
+            rm -rf Docs/RTB/Verbali/Esterni
           fi
         fi
-        if [ -d "build-output/PB" ]; then
-          if [ -d "build-output/PB/Verbali/Esterni" ]; then
-            rm -rf build-output/PB/Verbali/Esterni
+        if [ -d "Docs/PB" ]; then
+          if [ -d "Docs/PB/Verbali/Esterni" ]; then
+            rm -rf Docs/PB/Verbali/Esterni
           fi
         fi
     
@@ -77,7 +79,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Docs
-        path: build-output
+        path: Docs
 
     # Clonazione del repository di destinazione in una directory temporanea
     - name: Checkout Destination Repository
