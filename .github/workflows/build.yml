@@ -63,13 +63,13 @@ jobs:
       run: |
         mkdir build-output-clean
         if [ -d "build-output/RTB" ]; then
-          cp -r build-output-clean/RTB build-output-clean
+          cp -r build-output/RTB build-output-clean
           if [ -d "build-output-clean/RTB/Verbali/Esterni" ]; then
             rm -rf build-output-clean/RTB/Verbali/Esterni
           fi
         fi
         if [ -d "build-output/PB" ]; then
-          cp -r build-output-clean/PB build-output-clean
+          cp -r build-output/PB build-output-clean
           if [ -d "build-output-clean/PB/Verbali/Esterni" ]; then
             rm -rf build-output-clean/PB/Verbali/Esterni
           fi
