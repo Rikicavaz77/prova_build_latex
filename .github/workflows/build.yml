@@ -50,7 +50,7 @@ jobs:
         password: ${{ secrets.GHCR_TOKEN }}
 
     - name: Start Docker Container and Push Image
-      if: steps.cache-primes.outputs.cache-hit != 'true'
+      if: steps.cache-docker.outputs.cache-hit != 'true'
       run: |
         cd ${{ github.workspace }}/tools 
         docker compose up -d
@@ -58,7 +58,7 @@ jobs:
         docker push ghcr.io/rikicavaz77/argo-docs-latexpdfbuilder:latest
 
     - name: Pull Image and Start Docker Container
-      if: steps.cache-primes.outputs.cache-hit == 'true'
+      if: steps.cache-docker.outputs.cache-hit == 'true'
       run: |
         docker pull ghcr.io/rikicavaz77/argo-docs-latexpdfbuilder:latest
         docker tag ghcr.io/rikicavaz77/argo-docs-latexpdfbuilder:latest argo-docs-latexpdfbuilder:latest
