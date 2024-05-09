@@ -41,8 +41,13 @@ jobs:
       with:
         path: ${{ github.workspace }}/tools/docker
         key: ${{ runner.os }}-docker-${{ hashFiles('**/tools/docker-compose.yml') }}-${{ hashFiles('**/tools/docker/Dockerfile') }}
-        restore-keys: |
-          ${{ runner.os }}-docker
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.FINE_GRAINED_TOKEN }}
 
     # Creazione e avvio del contenitore Docker
     - name: Start Docker Container
