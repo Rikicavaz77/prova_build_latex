@@ -42,18 +42,28 @@ jobs:
         path: ${{ github.workspace }}/tools/docker
         key: ${{ runner.os }}-docker-${{ hashFiles('**/tools/docker-compose.yml') }}-${{ hashFiles('**/tools/docker/Dockerfile') }}
 
-    - name: Login to GitHub Container Registry
+    - name: Login to GHCR
       uses: docker/login-action@v3
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.FINE_GRAINED_TOKEN }}
 
-    # Creazione e avvio del contenitore Docker
-    - name: Start Docker Container
+    - name: Start Docker Container and Push Image
+      if: steps.cache-primes.outputs.cache-hit != 'true'
       run: |
-       cd ${{ github.workspace }}/tools
-       docker compose up -d
+        cd ${{ github.workspace }}/tools 
+        docker compose up -d
+        docker tag argo-docs-latexpdfbuilder:latest ghcr.io/Rikicavaz77/argo-docs.latexpdfbuilder:latest
+        docker push ghcr.io/Rikicavaz77/argo-docs.latexpdfbuilder:latest
+
+    - name: Pull Image and Start Docker Container
+      if: steps.cache-primes.outputs.cache-hit == 'true'
+      run: |
+        docker pull ghcr.io/Rikicavaz77/argo-docs-latexpdfbuilder:latest
+        docker tag ghcr.io/Rikicavaz77/argo-docs-latexpdfbuilder:latest argo-docs-latexpdfbuilder:latest
+        cd ${{ github.workspace }}/tools
+        docker compose up -d
 
     # Compilazione dei documenti tramite shell interattiva all'interno del contenitore Docker
     - name: Compile Documents
