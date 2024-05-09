@@ -54,8 +54,8 @@ jobs:
       run: |
         cd ${{ github.workspace }}/tools 
         docker compose up -d
-        docker tag argo-docs-latexpdfbuilder:latest ghcr.io/rikicavaz77/argo-docs.latexpdfbuilder:latest
-        docker push ghcr.io/rikicavaz77/argo-docs.latexpdfbuilder:latest
+        docker tag argo-docs-latexpdfbuilder:latest ghcr.io/rikicavaz77/argo-docs-latexpdfbuilder:latest
+        docker push ghcr.io/rikicavaz77/argo-docs-latexpdfbuilder:latest
 
     - name: Pull Image and Start Docker Container
       if: steps.cache-primes.outputs.cache-hit == 'true'
