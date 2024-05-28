@@ -9,10 +9,10 @@ permissions:
 
 # Trigger: pull request sul ramo base
 on:
-  push:
+  pull_request:
     branches: 
       - main
-    #types: [closed]
+    types: [closed]
 
 # Unità di lavoro all'interno del workflow
 jobs:
@@ -76,6 +76,10 @@ jobs:
       continue-on-error: true
       # I verbali esterni, poiché firmati dalla Proponente, non vanno ricompilati
       run: |
+        PR_CREATION_DATE=${{ github.event.pull_request.created_at }}           
+        PR_CLOSURE_DATE=${{ github.event.pull_request.closed_at }}
+        echo $PR_CREATION_DATE
+        echo $PR_CLOSURE_DATE
         mkdir build-output-clean
         if [ -d "build-output/RTB" ]; then
           cp -r build-output/RTB build-output-clean
