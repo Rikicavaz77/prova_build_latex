@@ -2,11 +2,6 @@
   <img src="Logo/argo.svg" width="250" height="205">
 </div>
 <h1 align="center">Argo (Gruppo 18, lotto 2)</h1>
-Versione 2.0.0
-<<<<<<< HEAD
->>>>>>> release/2.0.0
-=======
->>>>>>> a3a2533bd15e68bc5c57d13d98f8c7138d77a24d
 <p align="center">Corso di Ingegneria del Software, <a href="https://www.unipd.it" target="_blank">Università degli Studi di Padova</a>, Laurea triennale in Computer Science, A.A. 2023/2024</p>
 <p align="center">
   <code>Repository relativo alla documentazione di progetto (inclusi i verbali, interni ed esterni).</code>
