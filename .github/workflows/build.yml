@@ -9,10 +9,9 @@ permissions:
 
 # Trigger: pull request sul ramo base
 on:
-  pull_request:
+  push:
     branches: 
-      - main
-    types: [closed]
+      - ciao
 
 # Unità di lavoro all'interno del workflow
 jobs:
